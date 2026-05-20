@@ -336,6 +336,15 @@ After running `npm run compile:init` or `npm run tf:output`, Terraform prints:
 | `cloudfront_distribution_id` | Distribution ID → use as `SHORTRACE_CLOUDFRONT_DISTRIBUTION_ID` secret |
 | `cloudfront_domain_name` | Public HTTPS URL of the deployed dashboard |
 
+<div align="center">
+
 ## 📄 License
 
-MIT
+This software is released under the **MIT License**.<br>
+You are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software.
+
+---
+
+&nbsp; <sub>Developed with love — Cartagena de Indias D.T. y C.</sub><br>
+&nbsp; <sub>🔓 OPEN SOURCE SOFTWARE — FREE TO DISTRIBUTE 🔓</sub>
+</div>
