@@ -35,7 +35,7 @@ export const showErrorToast = (error: AxiosError | Error, durationMs = 6000) => 
   const timestamp = getNormalizedTimestamp();
 
   if ('isAxiosError' in error && error.isAxiosError) {
-    const axiosError = error as AxiosError<unkown>;
+    const axiosError = error as AxiosError<{ message?: string }>;
 
     details = {
       status: axiosError.response?.status,

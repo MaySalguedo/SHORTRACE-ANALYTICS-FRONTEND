@@ -1,5 +1,13 @@
 {
   "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"],
+      "@core/*": ["./src/core/*"],
+      "@api/*": ["./src/core/api/*"],
+      "@services/*": ["./src/core/services/*"],
+      "@models/*": ["./src/core/models/*"],
+      "@lib/*": ["./src/lib/*"]
+    },
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
     "target": "es2023",
     "lib": ["ES2023"],

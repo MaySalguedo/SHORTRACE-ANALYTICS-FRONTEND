@@ -6,6 +6,17 @@ import { describe, it, expect, vi } from 'vitest';
 import Dashboard from './Dashboard.svelte';
 import { metricsService } from '@core/services/metrics.service';
 
+vi.mock('chart.js/auto', () => {
+  const ChartMock = vi.fn().mockImplementation(function () {
+    return {
+      update: vi.fn(),
+      destroy: vi.fn(),
+      data: { labels: [], datasets: [{ data: [] }] }
+    };
+  });
+  return { default: ChartMock };
+});
+
 describe('src/features/analytics', () => {
   describe('Dashboard.svelte', () => {
     it('should fetch and display metrics when Query button is clicked', async () => {

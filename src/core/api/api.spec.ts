@@ -21,7 +21,7 @@ describe('HTTP Client Configuration', () => {
       response: { status: 500, statusText: 'Internal Server Error' }
     };
 
-    const rejectInterceptor = httpClient.interceptors.response.handlers[0].rejected;
+    const rejectInterceptor = (httpClient.interceptors.response as any).handlers[0].rejected;
 
     try {
       await rejectInterceptor(mockError);
@@ -33,9 +33,9 @@ describe('HTTP Client Configuration', () => {
   it('should return the response object on success', () => {
     const mockResponse = { data: { success: true } };
 
-    const successInterceptor = httpClient.interceptors.response.handlers[0].fulfilled;
+    const successInterceptor = (httpClient.interceptors.response as any).handlers[0].fulfilled;
 
-    const result = successInterceptor(mockResponse);
+    const result = successInterceptor(mockResponse as any);
 
     expect(result).toEqual(mockResponse);
   });
