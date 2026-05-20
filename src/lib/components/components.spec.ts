@@ -2,7 +2,7 @@
  * @vitest-environment jsdom
  */
 import { render, screen } from '@testing-library/svelte';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach, beforeAll } from 'vitest';
 import StatCard from './StatCard.svelte';
 import { toastStore } from '@core/stores/toast.store';
 import Toast from './Toast.svelte';
@@ -10,7 +10,7 @@ import LineChart from './LineChart.svelte';
 import Chart from 'chart.js/auto';
 
 vi.mock('chart.js/auto', () => {
-  const ChartMock = vi.fn().mockImplementation(function() {
+  const ChartMock = vi.fn().mockImplementation(function () {
     return {
       update: vi.fn(),
       destroy: vi.fn(),
@@ -108,11 +108,14 @@ describe('src/lib/components', () => {
 
   describe('LineChart.svelte', () => {
     beforeAll(() => {
-      vi.spyOn(window.HTMLCanvasElement.prototype, 'getContext').mockImplementation(() => ({
-        createLinearGradient: vi.fn(() => ({
-          addColorStop: vi.fn()
-        }))
-      }) as any);
+      vi.spyOn(window.HTMLCanvasElement.prototype, 'getContext').mockImplementation(
+        () =>
+          ({
+            createLinearGradient: vi.fn(() => ({
+              addColorStop: vi.fn()
+            }))
+          }) as any
+      );
     });
 
     afterEach(() => {
@@ -139,13 +142,13 @@ describe('src/lib/components', () => {
       expect(Chart).toHaveBeenCalled();
     });
 
-	it('should update chart when chartData changes (reactivity)', async () => {
-      const { component } = render(LineChart, { 
-        props: { chartData: { '2026-05-19': 150 } } 
+    it('should update chart when chartData changes (reactivity)', async () => {
+      const { rerender } = render(LineChart, {
+        props: { chartData: { '2026-05-19': 150 } }
       });
 
-      await component.$set({ 
-        chartData: { '2026-05-19': 150, '2026-05-20': 300 } 
+      await rerender({
+        chartData: { '2026-05-19': 150, '2026-05-20': 300 }
       });
 
       expect(Chart).toHaveBeenCalled();
@@ -153,15 +156,15 @@ describe('src/lib/components', () => {
 
     it('should destroy chart instance on unmount', () => {
       const { unmount } = render(LineChart, { props: { chartData: {} } });
-      
+
       unmount();
-      
-      expect(Chart).toHaveBeenCalled(); 
+
+      expect(Chart).toHaveBeenCalled();
     });
 
     it('should return early if getContext returns null', () => {
       vi.spyOn(window.HTMLCanvasElement.prototype, 'getContext').mockReturnValueOnce(null);
-      
+
       render(LineChart, { props: { chartData: {} } });
     });
   });

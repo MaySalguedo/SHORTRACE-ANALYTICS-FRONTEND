@@ -1,13 +1,12 @@
 {
   "compilerOptions": {    
-    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@core/*": ["src/core/*"],
-      "@api/*": ["src/core/api/*"],
-      "@services/*": ["src/core/services/*"],
-      "@models/*": ["src/core/models/*"],
-      "@lib/*": ["src/lib/*"]
+      "@/*": ["./src/*"],
+      "@core/*": ["./src/core/*"],
+      "@api/*": ["./src/core/api/*"],
+      "@services/*": ["./src/core/services/*"],
+      "@models/*": ["./src/core/models/*"],
+      "@lib/*": ["./src/lib/*"]
     }
   }, "files": [],
   "references": [

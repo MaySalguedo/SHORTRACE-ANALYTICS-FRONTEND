@@ -13,10 +13,8 @@ describe('Toast Store', () => {
   });
 
   it('should update the store and show the toast when showErrorToast is called', () => {
-    const mockError = {
-      message: 'Test error',
-      isAxiosError: false
-    } as Error;
+    const mockError = new Error('Test error') as any;
+    mockError.isAxiosError = false;
 
     showErrorToast(mockError);
 

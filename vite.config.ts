@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vitest/config'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
 import { fileURLToPath, URL } from 'node:url'
 
@@ -18,24 +18,23 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     globals: true,
+    setupFiles: ['./vitest.setup.ts'],
     coverage: {
       provider: 'v8',
       reporter: ['text'],
-	  include: ['src/**/*.{ts,svelte}'],
-	  setupFiles: ['./vitest.setup.ts'],
-	  alias: [
-		{ find: /^svelte$/, replacement: 'svelte/src/index.js' }
-	  ],
-      lines: 80,
-      functions: 80,
-      branches: 80,
-      statements: 80,
+      include: ['src/**/*.{ts,svelte}'],
       exclude: [
         'src/main.ts',
         'src/**/*.model.ts',
         'src/vite-env.d.ts',
         '**/*.config.*'
-      ]
+      ],
+	  thresholds: {
+        lines: 80,
+        functions: 80,
+        branches: 80,
+        statements: 80
+      }
     }
   }
 })

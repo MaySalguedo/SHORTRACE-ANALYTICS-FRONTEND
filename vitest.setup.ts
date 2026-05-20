@@ -25,8 +25,10 @@ afterEach(() => {
   cleanup();
 });
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 vi.spyOn(window.HTMLCanvasElement.prototype, 'getContext').mockImplementation(() => ({
   createLinearGradient: vi.fn(() => ({
     addColorStop: vi.fn()
   }))
 }) as any);
+/* eslint-enable @typescript-eslint/no-explicit-any */
