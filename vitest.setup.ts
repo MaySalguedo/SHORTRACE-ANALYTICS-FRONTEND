@@ -24,3 +24,9 @@ import { afterEach } from 'vitest';
 afterEach(() => {
   cleanup();
 });
+
+vi.spyOn(window.HTMLCanvasElement.prototype, 'getContext').mockImplementation(() => ({
+  createLinearGradient: vi.fn(() => ({
+    addColorStop: vi.fn()
+  }))
+}) as any);

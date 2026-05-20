@@ -13,11 +13,11 @@ describe('Toast Store', () => {
   });
 
   it('should update the store and show the toast when showErrorToast is called', () => {
-    const mockError = { 
-	  message: 'Test error',
-	  isAxiosError: false 
-	} as Error;
-    
+    const mockError = {
+      message: 'Test error',
+      isAxiosError: false
+    } as Error;
+
     showErrorToast(mockError);
 
     const state = get(toastStore);
@@ -38,7 +38,7 @@ describe('Toast Store', () => {
 
   it('should handle standard Error objects (non-Axios) correctly', () => {
     const standardError = new Error('Generic error');
-    
+
     showErrorToast(standardError);
 
     const state = get(toastStore);

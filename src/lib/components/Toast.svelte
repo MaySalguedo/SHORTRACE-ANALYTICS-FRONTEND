@@ -60,7 +60,7 @@
       </div>
 
       <button
-	    aria-label="Close Notification"
+        aria-label="Close Notification"
         class="absolute top-3 right-3 rounded-full p-1 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-700"
         on:click={() => toastStore.set({ visible: false, errorDetails: null })}
       >

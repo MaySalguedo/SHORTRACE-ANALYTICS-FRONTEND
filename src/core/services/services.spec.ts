@@ -5,8 +5,8 @@ import type { MetricSummary } from '@models/metric.model';
 
 vi.mock('@api/http.client', () => ({
   httpClient: {
-    get: vi.fn(),
-  },
+    get: vi.fn()
+  }
 }));
 
 describe('MetricsService', () => {
@@ -17,8 +17,8 @@ describe('MetricsService', () => {
       data: {
         code: 'test-code',
         totalClicks: 10,
-        clicksByDate: { '2026-05-01': 10 },
-      },
+        clicksByDate: { '2026-05-01': 10 }
+      }
     };
 
     (httpClient.get as any).mockResolvedValue(mockResponse);
@@ -28,8 +28,8 @@ describe('MetricsService', () => {
     expect(httpClient.get).toHaveBeenCalledWith(`/stats/${code}`, {
       params: {
         start_date: range.startDate,
-        end_date: range.endDate,
-      },
+        end_date: range.endDate
+      }
     });
 
     expect(result).toEqual(mockResponse.data);

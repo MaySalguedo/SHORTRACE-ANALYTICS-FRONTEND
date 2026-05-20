@@ -25,7 +25,7 @@ describe('src/features/analytics', () => {
       await fireEvent.click(queryBtn);
 
       expect(spy).toHaveBeenCalled();
-      
+
       const totalClicks = await screen.findByText('150');
       expect(totalClicks).toBeDefined();
     });

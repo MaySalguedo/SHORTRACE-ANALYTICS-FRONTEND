@@ -5,13 +5,14 @@
   import type { MetricSummary } from '@core/models/metric.model';
   import type { DateRange } from '@core/models/date-range.model';
   import StatCard from '@lib/components/StatCard.svelte';
+  import LineChart from '@lib/components/LineChart.svelte';
 
   const formatDate = (date: Date): string => {
     return date.toISOString().split('T')[0];
   };
 
   const today = new SvelteDate();
-  const sixMonthsAgo = new SvelteDate(today.getTime() - (6 * 30 * 24 * 60 * 60 * 1000));
+  const sixMonthsAgo = new SvelteDate(today.getTime() - 6 * 30 * 24 * 60 * 60 * 1000);
 
   let code = '';
   let dateRange: DateRange = {
@@ -118,7 +119,11 @@
       <div
         class="flex min-h-[300px] items-center justify-center rounded-xl border border-gray-100 bg-white p-6 shadow-sm md:col-span-3"
       >
-        <p class="font-medium text-gray-400">Chart component will be injected here...</p>
+        <div
+          class="flex min-h-[300px] w-full items-center justify-center rounded-xl border border-gray-100 bg-white p-6 shadow-sm md:col-span-3"
+        >
+          <LineChart chartData={metrics.clicksByDate} />
+        </div>
       </div>
     </div>
   {/if}
