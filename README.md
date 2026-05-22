@@ -70,6 +70,21 @@ ANALYTICS FRONTEND
         └── features/              # Page-level feature components (Dashboard)
 ```
 
+## 📱 Screenshots
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><b>Metrics Page</b></td>
+    </tr>
+    <tr>
+	  <td>
+        <img src="src/assets/screenshots/metrics.png" alt="SHROTRACE Metrics Screen" width="300"/>
+      </td>
+    </tr>
+  </table>
+</div>
+
 ## 🚀 Getting Started
 
 ### Prerequisites
